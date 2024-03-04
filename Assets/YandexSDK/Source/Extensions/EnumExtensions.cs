@@ -1,7 +1,7 @@
-﻿using Source.Enum;
-using UnityEngine;
+﻿using UnityEngine;
+using YandexSDK.Source.Enum;
 
-namespace Source.Extensions
+namespace YandexSDK.Source.Extensions
 {
    public static class EnumExtensions
    {

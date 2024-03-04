@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-namespace Source.SDK
+namespace YandexSDK.Source.SDK
 {
    public class YandexSDKProducts : SingletonBehaviour<YandexSDKProducts>
    {

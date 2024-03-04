@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Source
+namespace YandexSDK.Source
 {
    public abstract class SingletonBehaviour<T> : MonoBehaviour where T : class
    {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Source.SDK
+namespace YandexSDK.Source.SDK
 {
    public class YandexSDKLeaderboard : SingletonBehaviour<YandexSDKLeaderboard>
    {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using Source.SDK;
 using UnityEngine;
+using YandexSDK.Source.SDK;
 
 namespace _Game.Source
 {

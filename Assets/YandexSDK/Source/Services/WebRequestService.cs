@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
-using Source.Enum;
-using Source.SDK;
 using UnityEngine;
 using UnityEngine.Networking;
+using YandexSDK.Source.Enum;
+using YandexSDK.Source.SDK;
 
-namespace Source.Services
+namespace YandexSDK.Source.Services
 {
    public class WebRequestService : SingletonBehaviour<WebRequestService>
    {

@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json;
-using Source.Enum;
 using UnityEngine;
-using DeviceType = Source.Enum.DeviceType;
+using YandexSDK.Source.Enum;
+using DeviceType = YandexSDK.Source.Enum.DeviceType;
 
-namespace Source.SDK
+namespace YandexSDK.Source.SDK
 {
    public class YandexSDKEnvironment : SingletonBehaviour<YandexSDKEnvironment>
    {

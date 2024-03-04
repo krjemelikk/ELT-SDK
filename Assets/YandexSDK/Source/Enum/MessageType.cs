@@ -1,4 +1,4 @@
-﻿namespace Source.Enum
+﻿namespace YandexSDK.Source.Enum
 {
    public enum MessageType
    {

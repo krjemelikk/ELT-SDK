@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Runtime.InteropServices;
-using Source.Enum;
-using Source.Extensions;
+using YandexSDK.Source.Enum;
+using YandexSDK.Source.Extensions;
 
-namespace Source.SDK
+namespace YandexSDK.Source.SDK
 {
    public class YandexSDKConsole : SingletonBehaviour<YandexSDKConsole>
    {
