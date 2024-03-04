@@ -17,13 +17,10 @@ namespace Source.SDK
       [DllImport("__Internal")]
       private static extern void HideAdBannerExtern();
 
-      private event Action _callback;
+      public event Action RewardedAdShown;
 
-      public void ShowRewardedAd(Action callback)
-      {
+      public void ShowRewardedAd() =>
          ShowRewardedAdExtern();
-         SetCallback(callback);
-      }
 
       public void ShowInterstitialAd() =>
          ShowInterstitialAdExtern();
@@ -34,16 +31,7 @@ namespace Source.SDK
       public void HideAdBanner() =>
          HideAdBannerExtern();
 
-      private void OnRewardedAdShown()
-      {
-         _callback?.Invoke();
-         ResetCallback();
-      }
-
-      private void SetCallback(Action callback) =>
-         _callback += callback;
-
-      private void ResetCallback() =>
-         _callback = null;
+      private void OnRewardedAdShown() =>
+         RewardedAdShown?.Invoke();
    }
 }
