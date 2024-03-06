@@ -1,8 +1,7 @@
 using System.Runtime.InteropServices;
 using UnityEngine;
 using YaSDK.Source.SDK.EditorServices;
-using YaSDK.Source.SDK.Services;
-using YaSDK.Source.SDK.Services.Interfaces;
+using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK
 {
@@ -34,7 +33,7 @@ namespace YaSDK.Source.SDK
          ProductsService = new EditorProducts();
 #endif
 
-#if UNITY_IOS
+#if UNITY_WEBGL && !UNITY_EDITOR
          Console = gameObject.AddComponent<YandexSDKConsole>();
          AdvertisementService = gameObject.AddComponent<YandexSDKAdvertisement>();
          EnvironmentService = gameObject.AddComponent<YandexSDKEnvironment>();

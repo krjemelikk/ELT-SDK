@@ -2,9 +2,9 @@
 using System.Runtime.InteropServices;
 using YaSDK.Source.Enum;
 using YaSDK.Source.Extensions;
-using YaSDK.Source.SDK.Services.Interfaces;
+using YaSDK.Source.SDK.Interfaces;
 
-namespace YaSDK.Source.SDK.Services
+namespace YaSDK.Source.SDK.YandexServices
 {
    public class YandexSDKConsole : SingletonBehaviour<YandexSDKConsole>, IConsole
    {

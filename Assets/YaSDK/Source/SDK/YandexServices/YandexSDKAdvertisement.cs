@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using YaSDK.Source.SDK.Services.Interfaces;
+using YaSDK.Source.SDK.Interfaces;
 
-namespace YaSDK.Source.SDK.Services
+namespace YaSDK.Source.SDK.YandexServices
 {
    public class YandexSDKAdvertisement : SingletonBehaviour<YandexSDKAdvertisement>, IAdvertisementService
    {

@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using YaSDK.Source.Data;
 using YaSDK.Source.Data.JSON;
-using YaSDK.Source.SDK.Services.Interfaces;
+using YaSDK.Source.SDK.Interfaces;
 
-namespace YaSDK.Source.SDK.Services
+namespace YaSDK.Source.SDK.YandexServices
 {
    public class YandexSDKProducts : SingletonBehaviour<YandexSDKProducts>, IProductDataService
    {

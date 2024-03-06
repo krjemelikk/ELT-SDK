@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using YaSDK.Source.SDK;
-using YaSDK.Source.SDK.Services;
+using YaSDK.Source.SDK.YandexServices;
 
 namespace _Game.Source
 {
@@ -10,8 +10,9 @@ namespace _Game.Source
    {
       public void Start()
       {
-         
          YandexSDK.Instance.Initialize();
+         YandexSDK.Instance.Console.Log("Yandex SDK initialized");
+         YandexSDKConsole.Instance.Log("Yandex SDK initialized via console");
       }
 
       private void DoSomething()

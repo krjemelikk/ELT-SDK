@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using YaSDK.Source.SDK.Services.Interfaces;
+using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.EditorServices
 {
