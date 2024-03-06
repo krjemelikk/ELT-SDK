@@ -3,7 +3,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.YandexServices
 {
-   public class YandexSDKLeaderboard : SingletonBehaviour<YandexSDKLeaderboard>, ILeaderboardService
+   internal class YandexSDKLeaderboard : SingletonBehaviour<YandexSDKLeaderboard>, ILeaderboardService
    {
       [DllImport("__Internal")]
       private static extern void SetToLeaderBoardExtern(int value, string leaderboardName);

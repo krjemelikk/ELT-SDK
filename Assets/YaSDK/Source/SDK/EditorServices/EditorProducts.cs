@@ -3,7 +3,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.EditorServices
 {
-   public class EditorProducts : IProductDataService
+   internal class EditorProducts : IProductDataService
    {
       public IEnumerator LoadProductData()
       {

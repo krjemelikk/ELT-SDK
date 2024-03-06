@@ -8,7 +8,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.YandexServices
 {
-   public class YandexSDKProgress : SingletonBehaviour<YandexSDKProgress>, IProgressService
+   internal class YandexSDKProgress : SingletonBehaviour<YandexSDKProgress>, IProgressService
    {
       [DllImport("__Internal")]
       private static extern void SaveProgressExtern(string data);

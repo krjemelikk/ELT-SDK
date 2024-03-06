@@ -4,7 +4,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.EditorServices
 {
-   public class EditorAdvertisement : IAdvertisementService
+   internal class EditorAdvertisement : IAdvertisementService
    {
       public event Action RewardedAdShown;
 

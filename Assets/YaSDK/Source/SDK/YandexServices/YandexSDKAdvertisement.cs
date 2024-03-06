@@ -4,7 +4,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.YandexServices
 {
-   public class YandexSDKAdvertisement : SingletonBehaviour<YandexSDKAdvertisement>, IAdvertisementService
+   internal class YandexSDKAdvertisement : SingletonBehaviour<YandexSDKAdvertisement>, IAdvertisementService
    {
       [DllImport("__Internal")]
       private static extern void ShowRewardedAdExtern();

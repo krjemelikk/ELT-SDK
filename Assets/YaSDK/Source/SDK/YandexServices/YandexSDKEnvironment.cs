@@ -10,7 +10,7 @@ using DeviceType = YaSDK.Source.Enum.DeviceType;
 
 namespace YaSDK.Source.SDK.YandexServices
 {
-   public class YandexSDKEnvironment : SingletonBehaviour<YandexSDKEnvironment>, IEnvironmentService
+   internal class YandexSDKEnvironment : SingletonBehaviour<YandexSDKEnvironment>, IEnvironmentService
    {
       [DllImport("__Internal")]
       private static extern string LoadEnvironmentDataExtern();

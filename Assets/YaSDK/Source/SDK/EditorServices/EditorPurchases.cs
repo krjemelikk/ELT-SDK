@@ -4,7 +4,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.EditorServices
 {
-   public class EditorPurchases : IPurchaseService
+   internal class EditorPurchases : IPurchaseService
    {
       public event Action<string> PurchaseComplete;
 

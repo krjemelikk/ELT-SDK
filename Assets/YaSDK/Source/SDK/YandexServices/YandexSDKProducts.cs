@@ -8,7 +8,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.YandexServices
 {
-   public class YandexSDKProducts : SingletonBehaviour<YandexSDKProducts>, IProductDataService
+   internal class YandexSDKProducts : SingletonBehaviour<YandexSDKProducts>, IProductDataService
    {
       [DllImport("__Internal")]
       private static extern string LoadProductDataExtern();

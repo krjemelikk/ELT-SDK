@@ -12,19 +12,17 @@ namespace _Game.Source
       {
          YandexSDK.Instance.Initialize();
          YandexSDK.Instance.Console.Log("Yandex SDK initialized");
-         YandexSDKConsole.Instance.Log("Yandex SDK initialized via console");
       }
 
       private void DoSomething()
       {
-         YandexSDKConsole.Instance.Log("All data loaded");
       }
 
       private IEnumerator LoadData(Action onLoaded)
       {
-         yield return StartCoroutine(YandexSDKProgress.Instance.LoadProgress());
-         yield return StartCoroutine(YandexSDKEnvironment.Instance.LoadEnvironmentData());
-         yield return StartCoroutine(YandexSDKProducts.Instance.LoadProductData());
+         yield return StartCoroutine(YandexSDK.Instance.EnvironmentService.LoadEnvironmentData());
+         yield return StartCoroutine(YandexSDK.Instance.ProgressService.LoadProgress());
+         yield return StartCoroutine(YandexSDK.Instance.ProductsService.LoadProductData());
 
          onLoaded?.Invoke();
       }

@@ -5,7 +5,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.YandexServices
 {
-   public class YandexSDKPurchases : SingletonBehaviour<YandexSDKPurchases>, IPurchaseService
+   internal class YandexSDKPurchases : SingletonBehaviour<YandexSDKPurchases>, IPurchaseService
    {
       [DllImport("__Internal")]
       private static extern void PurchaseExtern(string id, bool withConsume);

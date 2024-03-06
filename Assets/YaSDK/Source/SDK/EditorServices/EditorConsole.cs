@@ -4,7 +4,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.EditorServices
 {
-   public class EditorConsole : IConsole
+   internal class EditorConsole : IConsole
    {
       public void Log(string message, MessageType messageType = MessageType.Info, string filePath = "", int lineNumber = 0)
       {

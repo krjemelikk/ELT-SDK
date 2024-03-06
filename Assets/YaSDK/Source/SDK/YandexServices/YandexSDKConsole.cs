@@ -6,7 +6,7 @@ using YaSDK.Source.SDK.Interfaces;
 
 namespace YaSDK.Source.SDK.YandexServices
 {
-   public class YandexSDKConsole : SingletonBehaviour<YandexSDKConsole>, IConsole
+   internal class YandexSDKConsole : SingletonBehaviour<YandexSDKConsole>, IConsole
    {
       [DllImport("__Internal")]
       private static extern void ConsoleLogExtern(

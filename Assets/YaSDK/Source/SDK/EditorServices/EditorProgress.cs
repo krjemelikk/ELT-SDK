@@ -8,7 +8,7 @@ using Progress = YaSDK.Source.Data.Progress;
 
 namespace YaSDK.Source.SDK.EditorServices
 {
-   public class EditorProgress : IProgressService
+   internal class EditorProgress : IProgressService
    {
       public void SaveProgress(Progress progress)
       {
