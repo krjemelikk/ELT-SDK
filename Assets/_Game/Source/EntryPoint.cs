@@ -1,7 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using YandexSDK.Source.SDK;
+using YaSDK.Source.SDK;
+using YaSDK.Source.SDK.Services;
 
 namespace _Game.Source
 {
@@ -9,7 +10,8 @@ namespace _Game.Source
    {
       public void Start()
       {
-         StartCoroutine(LoadData(DoSomething));
+         
+         YandexSDK.Instance.Initialize();
       }
 
       private void DoSomething()
