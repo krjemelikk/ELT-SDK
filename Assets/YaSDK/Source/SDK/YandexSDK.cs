@@ -34,7 +34,7 @@ namespace YaSDK.Source.SDK
          ProductsService = new EditorProducts();
 #endif
 
-#if UNITY_WEBGL
+#if UNITY_IOS
          Console = gameObject.AddComponent<YandexSDKConsole>();
          AdvertisementService = gameObject.AddComponent<YandexSDKAdvertisement>();
          EnvironmentService = gameObject.AddComponent<YandexSDKEnvironment>();
