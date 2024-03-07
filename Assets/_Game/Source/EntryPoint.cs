@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using UnityEngine;
 using YaSDK.Source.SDK;
-using YaSDK.Source.SDK.YandexServices;
 
 namespace _Game.Source
 {

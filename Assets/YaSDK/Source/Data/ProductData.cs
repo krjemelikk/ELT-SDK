@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using YaSDK.Source.SDK.EditorServices.Data;
 
 namespace YaSDK.Source.Data

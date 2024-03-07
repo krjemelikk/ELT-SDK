@@ -26,6 +26,7 @@ namespace YaSDK.Source.SDK.YandexServices
       private void OnEnvironmentDataLoaded(string data)
       {
          var dataJson = JsonConvert.DeserializeObject<EnvironmentDataJson>(data);
+
          YandexSDKData.Instance.EnvironmentData = new EnvironmentData(
             dataJson.Device switch
             {

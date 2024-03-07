@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices;
 using UnityEngine;
 using YaSDK.Source.SDK.EditorServices;
 using YaSDK.Source.SDK.Interfaces;
@@ -7,10 +6,8 @@ namespace YaSDK.Source.SDK
 {
    public class YandexSDK : SingletonBehaviour<YandexSDK>
    {
-      [DllImport("__Internal")]
-      private static extern void GameReadyExtern();
-
       public IConsole Console;
+      public IGameReadyAPIService GameReadyService;
       public IAdvertisementService AdvertisementService;
       public IEnvironmentService EnvironmentService;
       public ILeaderboardService LeaderboardService;
@@ -25,6 +22,7 @@ namespace YaSDK.Source.SDK
       {
 #if UNITY_EDITOR
          Console = new EditorConsole();
+         GameReadyService = new EditorGameReadyAPI();
          AdvertisementService = new EditorAdvertisement();
          EnvironmentService = new EditorEnvironment();
          LeaderboardService = new EditorLeaderboard();
@@ -35,6 +33,7 @@ namespace YaSDK.Source.SDK
 
 #if UNITY_WEBGL && !UNITY_EDITOR
          Console = gameObject.AddComponent<YandexSDKConsole>();
+         GameReadyService = gameObject.AddComponent<YandexSDKGameReadyAPI>();
          AdvertisementService = gameObject.AddComponent<YandexSDKAdvertisement>();
          EnvironmentService = gameObject.AddComponent<YandexSDKEnvironment>();
          LeaderboardService = gameObject.AddComponent<YandexSDKLeaderboard>();
@@ -43,9 +42,6 @@ namespace YaSDK.Source.SDK
          ProductsService = gameObject.AddComponent<YandexSDKProducts>();
 #endif
       }
-
-      public void GameReady() =>
-         GameReadyExtern();
 
       public void PauseGame()
       {
