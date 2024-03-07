@@ -1,4 +1,4 @@
-﻿namespace YaSDK.Source.SDK.Interfaces
+﻿namespace YaSDK.Source.SDK.Services.Interfaces
 {
    public interface ILeaderboardService
    { 

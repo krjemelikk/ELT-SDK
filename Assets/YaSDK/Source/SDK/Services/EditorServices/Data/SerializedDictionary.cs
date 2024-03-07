@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace YaSDK.Source.SDK.EditorServices.Data
+namespace YaSDK.Source.SDK.Services.EditorServices.Data
 {
    [Serializable]
    public class SerializedDictionary<TKey, TValue>

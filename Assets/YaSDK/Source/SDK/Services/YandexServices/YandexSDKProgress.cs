@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 using UnityEngine;
 using YaSDK.Source.Data;
-using YaSDK.Source.SDK.Interfaces;
+using YaSDK.Source.SDK.Services.Interfaces;
 
-namespace YaSDK.Source.SDK.YandexServices
+namespace YaSDK.Source.SDK.Services.YandexServices
 {
    internal class YandexSDKProgress : SingletonBehaviour<YandexSDKProgress>, IProgressService
    {

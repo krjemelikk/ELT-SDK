@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using YaSDK.Source.SDK.Interfaces;
+using YaSDK.Source.SDK.Services.Interfaces;
 
-namespace YaSDK.Source.SDK.EditorServices
+namespace YaSDK.Source.SDK.Services.EditorServices
 {
    internal class EditorLeaderboard : ILeaderboardService
    {

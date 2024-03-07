@@ -1,6 +1,6 @@
 using UnityEngine;
-using YaSDK.Source.SDK.EditorServices;
-using YaSDK.Source.SDK.Interfaces;
+using YaSDK.Source.SDK.Services.EditorServices;
+using YaSDK.Source.SDK.Services.Interfaces;
 
 namespace YaSDK.Source.SDK
 {

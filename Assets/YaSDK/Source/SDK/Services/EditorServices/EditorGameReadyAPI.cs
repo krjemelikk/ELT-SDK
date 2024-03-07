@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using YaSDK.Source.SDK.Interfaces;
+using YaSDK.Source.SDK.Services.Interfaces;
 
-namespace YaSDK.Source.SDK.EditorServices
+namespace YaSDK.Source.SDK.Services.EditorServices
 {
-   public class EditorGameReadyAPI : IGameReadyAPIService
+   internal class EditorGameReadyAPI : IGameReadyAPIService
    {
       public void GameReadyAPI()
       {

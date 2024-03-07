@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using YaSDK.Source.SDK.EditorServices.Data;
+using YaSDK.Source.SDK.Services.EditorServices.Data;
 
 namespace YaSDK.Source.Data
 {

@@ -1,6 +1,6 @@
 ﻿using YaSDK.Source.Enum;
 
-namespace YaSDK.Source.SDK.Interfaces
+namespace YaSDK.Source.SDK.Services.Interfaces
 {
    public interface IConsole
    {

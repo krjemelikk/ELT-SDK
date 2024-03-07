@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace YaSDK.Source.SDK.Interfaces
+namespace YaSDK.Source.SDK.Services.Interfaces
 {
    public interface IPurchaseService
    {

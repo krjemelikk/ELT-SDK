@@ -5,10 +5,10 @@ using UnityEngine;
 using YaSDK.Source.Data;
 using YaSDK.Source.Data.JSON;
 using YaSDK.Source.Enum;
-using YaSDK.Source.SDK.Interfaces;
+using YaSDK.Source.SDK.Services.Interfaces;
 using DeviceType = YaSDK.Source.Enum.DeviceType;
 
-namespace YaSDK.Source.SDK.YandexServices
+namespace YaSDK.Source.SDK.Services.YandexServices
 {
    internal class YandexSDKEnvironment : SingletonBehaviour<YandexSDKEnvironment>, IEnvironmentService
    {

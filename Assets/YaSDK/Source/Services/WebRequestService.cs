@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using YaSDK.Source.Enum;
-using YaSDK.Source.SDK.YandexServices;
+using YaSDK.Source.SDK.Services.YandexServices;
 
 namespace YaSDK.Source.Services
 {
