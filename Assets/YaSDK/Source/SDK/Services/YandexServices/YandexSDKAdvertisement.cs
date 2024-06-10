@@ -17,11 +17,13 @@ namespace YaSDK.Source.SDK.Services.YandexServices
 
       [DllImport("__Internal")]
       private static extern void HideAdBannerExtern();
-
-      public event Action RewardedAdShown;
-
-      public void ShowRewardedAd() =>
+      
+      private Action _onRewardedAdShown;
+      public void ShowRewardedAd(Action onRewarded)
+      {
+         _onRewardedAdShown = onRewarded;
          ShowRewardedAdExtern();
+      }
 
       public void ShowInterstitialAd() =>
          ShowInterstitialAdExtern();
@@ -32,7 +34,16 @@ namespace YaSDK.Source.SDK.Services.YandexServices
       public void HideAdBanner() =>
          HideAdBannerExtern();
 
-      private void OnRewardedAdShown() =>
-         RewardedAdShown?.Invoke();
+      private void OnRewardedAdShown()
+      {
+         _onRewardedAdShown?.Invoke();
+         Reset();
+      }
+
+      private void OnRewardedAdError() =>
+         Reset();
+
+      private void Reset() =>
+         _onRewardedAdShown = null;
    }
 }

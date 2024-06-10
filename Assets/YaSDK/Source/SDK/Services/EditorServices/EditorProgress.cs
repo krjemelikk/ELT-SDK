@@ -9,9 +9,11 @@ namespace YaSDK.Source.SDK.Services.EditorServices
 {
    internal class EditorProgress : IProgressService
    {
-      public void SaveProgress(Progress progress)
+      public Progress Progress { get; private set; }
+
+      public void SaveProgress()
       {
-         var json = JsonConvert.SerializeObject(progress);
+         var json = JsonConvert.SerializeObject(Progress);
          PlayerPrefs.SetString("Progress", json);
       }
 
@@ -19,19 +21,19 @@ namespace YaSDK.Source.SDK.Services.EditorServices
       {
          if (PlayerPrefs.HasKey("Progress"))
          {
-            YandexSDKData.Instance.Progress =
-               JsonConvert.DeserializeObject<Progress>(PlayerPrefs.GetString("Progress"));
+            Progress = JsonConvert.DeserializeObject<Progress>(PlayerPrefs.GetString("Progress"));
             yield return null;
          }
 
-         YandexSDKData.Instance.Progress = new Progress();
+         Progress = new Progress();
          yield return null;
       }
-
+#if UNITY_EDITOR
       [MenuItem("YandexSDK/Clean editor progress")]
       public static void CleanUp()
       {
          PlayerPrefs.DeleteAll();
       }
    }
+#endif
 }

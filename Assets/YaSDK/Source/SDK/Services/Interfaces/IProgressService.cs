@@ -5,7 +5,8 @@ namespace YaSDK.Source.SDK.Services.Interfaces
 {
    public interface IProgressService
    {
-      void SaveProgress(Progress progress);
+      Progress Progress { get; }
+      void SaveProgress();
       IEnumerator LoadProgress();
    }
 }

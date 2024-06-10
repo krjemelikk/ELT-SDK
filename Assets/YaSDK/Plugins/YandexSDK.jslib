@@ -40,6 +40,7 @@ mergeInto(LibraryManager.library, {
             },
 
             onError: (error) => {
+               myGameInstance.SendMessage("YandexSDK", "OnRewardedAdError");
                console.log('Error while open Rewarded ad', error);
             },
          }
@@ -94,14 +95,14 @@ mergeInto(LibraryManager.library, {
    },
 
    LoadProductDataExtern: function () {
-      var CurrencyImageURL;
+      var currencyImageURL;
       var productList = [];
 
       payments.getCatalog().then(products => {
          for (i = 0; i < products.length; i++) {
 
             if (i == 0) {
-               CurrencyImageURL = products[i].getPriceCurrencyImage('medium');
+               currencyImageURL = products[i].getPriceCurrencyImage('medium');
             }
 
             let productData = {
@@ -109,15 +110,16 @@ mergeInto(LibraryManager.library, {
                Tittle: products[i].title,
                Price: products[i].priceValue,
                ProductImageURL: products[i].imageURI,
+               CurrencyImageURL = currencyImageURL,
             }
 
             productList.push(productData);
          }
 
          var dataJson = JSON.stringify({
-            CurrencyImageURL: CurrencyImageURL,
             Products: productList,
          });
+         
          myGameInstance.SendMessage("YandexSDK", "OnProductDataLoaded", dataJson);
       });
    },

@@ -16,6 +16,7 @@ namespace YaSDK.Source.SDK.Services.YandexServices
       private static extern string LoadEnvironmentDataExtern();
 
       private bool _isLoaded;
+      public EnvironmentData EnvironmentData { get; private set; }
 
       public IEnumerator LoadEnvironmentData()
       {
@@ -27,7 +28,8 @@ namespace YaSDK.Source.SDK.Services.YandexServices
       {
          var dataJson = JsonConvert.DeserializeObject<EnvironmentDataJson>(data);
 
-         YandexSDKData.Instance.EnvironmentData = new EnvironmentData(
+         EnvironmentData = new EnvironmentData(
+            
             dataJson.Device switch
             {
                "desktop" => DeviceType.Desktop,
@@ -36,9 +38,11 @@ namespace YaSDK.Source.SDK.Services.YandexServices
                "tv" => DeviceType.TV,
                _ => DeviceType.Desktop
             },
+            
             dataJson.Language is "ru" or "be" or "uk" or "kk" or "az" or "hy"
                ? Language.Russian
                : Language.English,
+            
             dataJson.TopLevelDomain
          );
 

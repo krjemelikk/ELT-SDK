@@ -6,12 +6,10 @@ namespace YaSDK.Source.SDK.Services.EditorServices
 {
    internal class EditorAdvertisement : IAdvertisementService
    {
-      public event Action RewardedAdShown;
-
-      public void ShowRewardedAd()
+      public void ShowRewardedAd(Action onRewarded)
       {
+         onRewarded?.Invoke();
          Debug.Log("<color=blue>Advertisement: </color>Rewarded ad shown");
-         RewardedAdShown?.Invoke();
       }
 
       public void ShowInterstitialAd() =>

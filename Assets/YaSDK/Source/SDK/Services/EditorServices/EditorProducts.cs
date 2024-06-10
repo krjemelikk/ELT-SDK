@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using YaSDK.Source.Data;
 using YaSDK.Source.SDK.Services.Interfaces;
 
 namespace YaSDK.Source.SDK.Services.EditorServices
@@ -7,10 +9,17 @@ namespace YaSDK.Source.SDK.Services.EditorServices
    {
       public IEnumerator LoadProductData()
       {
-         YandexSDKData.Instance.ProductData.Products =
-            YandexSDKData.Instance.ProductData.EditorProducts.ToDictionary();
-
          yield return null;
+      }
+
+      public ProductData GetProduct(string id)
+      {
+         throw new System.NotImplementedException();
+      }
+
+      public List<ProductData> GetAllProducts()
+      {
+         throw new System.NotImplementedException();
       }
    }
 }

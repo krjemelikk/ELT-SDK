@@ -4,8 +4,7 @@ namespace YaSDK.Source.SDK.Services.Interfaces
 {
    public interface IAdvertisementService
    {
-      event Action RewardedAdShown;
-      void ShowRewardedAd();
+      void ShowRewardedAd(Action onRewarded);
 
       void ShowInterstitialAd();
 

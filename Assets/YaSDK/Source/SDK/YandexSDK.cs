@@ -1,24 +1,26 @@
+using System.Collections;
 using UnityEngine;
 using YaSDK.Source.SDK.Services.EditorServices;
 using YaSDK.Source.SDK.Services.Interfaces;
+using YaSDK.Source.SDK.Services.YandexServices;
 
 namespace YaSDK.Source.SDK
 {
    public class YandexSDK : SingletonBehaviour<YandexSDK>
    {
-      public IConsole Console;
-      public IGameReadyAPIService GameReadyService;
-      public IAdvertisementService AdvertisementService;
-      public IEnvironmentService EnvironmentService;
-      public ILeaderboardService LeaderboardService;
-      public IPurchaseService PurchaseService;
-      public IProgressService ProgressService;
-      public IProductDataService ProductsService;
+      public IConsole Console { get; private set; }
+      public IGameReadyAPIService GameReadyService { get; private set; }
+      public IAdvertisementService AdvertisementService { get; private set; }
+      public IEnvironmentService EnvironmentService { get; private set; }
+      public ILeaderboardService LeaderboardService { get; private set; }
+      public IPurchaseService PurchaseService { get; private set; }
+      public IProgressService ProgressService { get; private set; }
+      public IProductDataService ProductsService { get; private set; }
 
       private void Awake() =>
          DontDestroyOnLoad(this);
 
-      public void Initialize()
+      public IEnumerator Initialize()
       {
 #if UNITY_EDITOR
          Console = new EditorConsole();
@@ -30,7 +32,7 @@ namespace YaSDK.Source.SDK
          ProgressService = new EditorProgress();
          ProductsService = new EditorProducts();
 #endif
-
+         
 #if UNITY_WEBGL && !UNITY_EDITOR
          Console = gameObject.AddComponent<YandexSDKConsole>();
          GameReadyService = gameObject.AddComponent<YandexSDKGameReadyAPI>();
@@ -41,6 +43,10 @@ namespace YaSDK.Source.SDK
          ProgressService = gameObject.AddComponent<YandexSDKProgress>();
          ProductsService = gameObject.AddComponent<YandexSDKProducts>();
 #endif
+         
+         yield return ProductsService.LoadProductData();
+         yield return ProgressService.LoadProgress();
+         yield return EnvironmentService.LoadEnvironmentData();
       }
 
       public void PauseGame()
