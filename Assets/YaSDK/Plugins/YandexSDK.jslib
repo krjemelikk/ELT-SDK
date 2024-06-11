@@ -110,7 +110,7 @@ mergeInto(LibraryManager.library, {
                Tittle: products[i].title,
                Price: products[i].priceValue,
                ProductImageURL: products[i].imageURI,
-               CurrencyImageURL = currencyImageURL,
+               CurrencyImageURL: currencyImageURL,
             }
 
             productList.push(productData);
