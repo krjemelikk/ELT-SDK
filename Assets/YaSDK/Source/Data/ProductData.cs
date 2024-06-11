@@ -1,5 +1,8 @@
-﻿namespace YaSDK.Source.Data
+﻿using System;
+
+namespace YaSDK.Source.Data
 {
+   [Serializable]
    public class ProductData
    {
       public string Id;

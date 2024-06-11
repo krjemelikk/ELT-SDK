@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using Newtonsoft.Json;
 using UnityEngine;
 using YaSDK.Source.SDK;
 
@@ -13,7 +13,7 @@ namespace YaSDK.Source
       private IEnumerator Bootstrap()
       {
          yield return YandexSDK.Instance.Initialize();
-         // Load Game Scene Here
+         // load game scene here
       }
    }
 }

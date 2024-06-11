@@ -34,6 +34,6 @@ namespace YaSDK.Source.SDK.Services.EditorServices
       {
          PlayerPrefs.DeleteAll();
       }
-   }
 #endif
+   }
 }
