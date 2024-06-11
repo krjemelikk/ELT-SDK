@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using YaSDK.Source.SDK.Services;
 using YaSDK.Source.SDK.Services.EditorServices;
+using YaSDK.Source.SDK.Services.EditorServices.Utilities;
 using YaSDK.Source.SDK.Services.Interfaces;
 using YaSDK.Source.SDK.Services.YandexServices;
 
@@ -8,6 +10,12 @@ namespace YaSDK.Source.SDK
 {
    public class YandexSDK : SingletonBehaviour<YandexSDK>
    {
+#if UNITY_EDITOR
+      [SerializeField] private EditorSDKSettings _editorSDKSettings;
+#endif
+
+      private IPurchaseHandler _purchaseHandler;
+
       public IConsole Console { get; private set; }
       public IGameReadyAPIService GameReadyService { get; private set; }
       public IAdvertisementService AdvertisementService { get; private set; }
@@ -26,13 +34,13 @@ namespace YaSDK.Source.SDK
          Console = new EditorConsole();
          GameReadyService = new EditorGameReadyAPI();
          AdvertisementService = new EditorAdvertisement();
-         EnvironmentService = new EditorEnvironment();
+         EnvironmentService = new EditorEnvironment(_editorSDKSettings.EnvironmentData);
          LeaderboardService = new EditorLeaderboard();
          PurchaseService = new EditorPurchases();
          ProgressService = new EditorProgress();
-         ProductsService = new EditorProducts();
+         ProductsService = new EditorProducts(_editorSDKSettings.Products);
 #endif
-         
+
 #if UNITY_WEBGL && !UNITY_EDITOR
          Console = gameObject.AddComponent<YandexSDKConsole>();
          GameReadyService = gameObject.AddComponent<YandexSDKGameReadyAPI>();
@@ -43,10 +51,10 @@ namespace YaSDK.Source.SDK
          ProgressService = gameObject.AddComponent<YandexSDKProgress>();
          ProductsService = gameObject.AddComponent<YandexSDKProducts>();
 #endif
-         
-         yield return ProductsService.LoadProductData();
-         yield return ProgressService.LoadProgress();
-         yield return EnvironmentService.LoadEnvironmentData();
+         _purchaseHandler = new PurchaseHandler(PurchaseService);
+         _purchaseHandler.Initialize();
+
+         yield return LoadAllData();
       }
 
       public void PauseGame()
@@ -59,6 +67,16 @@ namespace YaSDK.Source.SDK
       {
          Time.timeScale = 1;
          AudioListener.pause = false;
+      }
+
+      private void OnDisable() =>
+         _purchaseHandler.CleanUp();
+
+      private IEnumerator LoadAllData()
+      {
+         yield return ProductsService.LoadProductData();
+         yield return ProgressService.LoadProgress();
+         yield return EnvironmentService.LoadEnvironmentData();
       }
    }
 }
