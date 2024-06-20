@@ -7,6 +7,7 @@ using UnityEngine;
 using YaSDK.Source.Data;
 using YaSDK.Source.Data.JSON;
 using YaSDK.Source.SDK.Services.Interfaces;
+using YaSDK.Source.Services;
 
 namespace YaSDK.Source.SDK.Services.YandexServices
 {
@@ -17,6 +18,8 @@ namespace YaSDK.Source.SDK.Services.YandexServices
 
       private Dictionary<string, ProductData> _products = new();
       private bool _isLoaded;
+
+      public Texture CurrencyTexture { get; private set; }
 
 
       public IEnumerator LoadProductData()
@@ -35,6 +38,19 @@ namespace YaSDK.Source.SDK.Services.YandexServices
       {
          var dataJson = JsonConvert.DeserializeObject<ProductCatalogJson>(data);
          _products = dataJson.Products.ToDictionary(x => x.Id, x => x);
+
+         if (_products.FirstOrDefault().Value == null)
+         {
+            _isLoaded = true;
+            return;
+         }
+
+         WebRequestService.Instance.DownloadImage(_products.FirstOrDefault().Value.CurrencyImageURL, SetTexture);
+      }
+
+      private void SetTexture(Texture texture)
+      {
+         CurrencyTexture = texture;
          _isLoaded = true;
       }
    }
