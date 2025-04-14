@@ -19,7 +19,6 @@ namespace ELT_SDK.Source.Services
 
          if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
          {
-            ELT_SDK.Source.SDK.ELTSDK.Instance.Console.Log(request.error, MessageType.Error);
             yield break;
          }
 

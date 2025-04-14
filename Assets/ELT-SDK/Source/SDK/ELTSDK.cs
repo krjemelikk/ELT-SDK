@@ -15,8 +15,6 @@ namespace ELT_SDK.Source.SDK
 #endif
 
       private IPurchaseHandler _purchaseHandler;
-
-      public IConsole Console { get; private set; }
       public IGameReadyService GameReadyService { get; private set; }
       public IAdvertisementService AdvertisementService { get; private set; }
       public IEnvironmentService EnvironmentService { get; private set; }
@@ -31,7 +29,6 @@ namespace ELT_SDK.Source.SDK
       public IEnumerator Initialize()
       {
 #if UNITY_EDITOR
-         Console = new EditorConsole();
          GameReadyService = new EditorGameReady();
          AdvertisementService = new EditorAdvertisement();
          EnvironmentService = new EditorEnvironment(_editorSDKSettings.EnvironmentData);
@@ -42,7 +39,6 @@ namespace ELT_SDK.Source.SDK
 #endif
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-         Console = gameObject.AddComponent<YandexSDKConsole>();
          GameReadyService = gameObject.AddComponent<YandexSDKGameReadyAPI>();
          AdvertisementService = gameObject.AddComponent<YandexSDKAdvertisement>();
          EnvironmentService = gameObject.AddComponent<YandexSDKEnvironment>();
