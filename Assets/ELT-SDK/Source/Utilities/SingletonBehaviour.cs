@@ -6,7 +6,16 @@ namespace ELT_SDK.Source.Utilities
    {
       public static T Instance { get; private set; }
 
-      protected SingletonBehaviour() =>
-         Instance = this as T;
+      private void Awake()
+      {
+         if (Instance == null)
+         {
+            Instance = this as T;
+            DontDestroyOnLoad(gameObject);
+         }
+
+         else
+            Destroy(this);
+      }
    }
 }

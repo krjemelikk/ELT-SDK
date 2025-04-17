@@ -1,6 +1,5 @@
 using System;
-using System.Collections;
-using ELT_SDK.Source.Enum;
+using Cysharp.Threading.Tasks;
 using ELT_SDK.Source.Utilities;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,21 +8,26 @@ namespace ELT_SDK.Source.Services
 {
    public class WebRequestService : SingletonBehaviour<WebRequestService>
    {
-      public void DownloadImage(string url, Action<Texture> callback) =>
-         StartCoroutine(DownloadImageRoutine(url, callback));
-
-      private IEnumerator DownloadImageRoutine(string url, Action<Texture> callback)
+      public async UniTask<Texture> DownloadTexture(string url)
       {
-         UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
-         yield return request.SendWebRequest();
-
-         if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+         try
          {
-            yield break;
+            UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+            await request.SendWebRequest().ToUniTask();
+
+            if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
+               throw new Exception(request.error);
+
+            Texture2D texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
+
+            return texture;
          }
 
-         Texture texture = ((DownloadHandlerTexture) request.downloadHandler).texture;
-         callback?.Invoke(texture);
+         catch (Exception e)
+         {
+            Debug.Log(e);
+            throw;
+         }
       }
    }
 }
