@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using ELTSDK.Source.Entities;
 
@@ -8,6 +9,7 @@ namespace ELTSDK.Source.Services.Interfaces
    {
       Dictionary<string, Leaderboard> Leaderboards { get; }
       void SetScoreToLeaderboard(string leaderboardName, int value);
-      UniTask UpdateLeaderboard(string leaderboardName);
+      UniTask LoadLeaderboard(string leaderboardName);
+      public event Action<string> LeaderboardUpdated;
    }
 }

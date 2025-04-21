@@ -1,7 +1,4 @@
-﻿using ELTSDK.Source.Extensions;
-using ELTSDK.Source.Services.Interfaces;
-using ELTSDK.Source.Utilities.Enum;
-using UnityEngine;
+﻿using ELTSDK.Source.Services.Interfaces;
 
 namespace ELTSDK.Source.Services.EditorServices
 {
@@ -9,7 +6,7 @@ namespace ELTSDK.Source.Services.EditorServices
    {
       public void GameReady()
       {
-         Debug.Log($"[{"ELTSDK".WithColor(TextColor.Yellow)}] - Game ready API called");
+         
       }
    }
 }

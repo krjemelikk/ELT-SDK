@@ -21,12 +21,7 @@ namespace ELTSDK.Source
 
       private WebRequestService _webRequestService;
 
-      public void Start()
-      {
-         RegisterServicesByPlatform();
-      }
-
-      private void RegisterServicesByPlatform()
+      public void Initialize()
       {
          switch (Application.platform)
          {
@@ -41,6 +36,7 @@ namespace ELTSDK.Source
                RemoteConfigService = gameObject.AddComponent<YandexRemoteConfigService>();
                SaveLoadService = gameObject.AddComponent<YandexSaveLoadService>();
                break;
+
             case RuntimePlatform.WindowsEditor:
                Advertisement = new EditorAdvertisementService();
                Environment = new EditorEnvironmentService();

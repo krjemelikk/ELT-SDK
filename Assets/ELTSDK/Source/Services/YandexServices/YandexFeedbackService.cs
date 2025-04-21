@@ -5,7 +5,7 @@ using ELTSDK.Source.Utilities;
 
 namespace ELTSDK.Source.Services.YandexServices
 {
-   public class YandexFeedbackService : SingletonBehaviour<YandexFeedbackService>, IFeedbackService
+   internal class YandexFeedbackService : SingletonBehaviour<YandexFeedbackService>, IFeedbackService
    {
       [DllImport("__Internal")]
       private static extern void ReviewRequestExtern();

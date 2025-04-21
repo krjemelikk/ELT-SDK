@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 namespace ELTSDK.Source.Services
 {
-   public class WebRequestService : SingletonBehaviour<WebRequestService>
+   internal class WebRequestService : SingletonBehaviour<WebRequestService>
    {
       public async UniTask<Texture> DownloadTexture(string url)
       {

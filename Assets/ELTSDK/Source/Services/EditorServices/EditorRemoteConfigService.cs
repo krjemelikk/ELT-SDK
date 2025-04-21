@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace ELTSDK.Source.Services.EditorServices
 {
-   public class EditorRemoteConfigService : IRemoteConfigService
+   internal class EditorRemoteConfigService : IRemoteConfigService
    {
       private const string EditorConfigsPath = "configs";
       public Dictionary<string, string> Configs { get; private set; } = new();

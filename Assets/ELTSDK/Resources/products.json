@@ -1,14 +1,12 @@
-{
-  "Products": [
-    {
-      "Id": "example",
-      "Price": "100",
-      "CurrencyImageURL": "//yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png"
-    },
-    {
-      "Id": "example2",
-      "Price": "50",
-      "CurrencyImageURL": "//yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png"
-    }
-  ]
-}
+[
+  {
+    "Id": "example",
+    "Price": "100",
+    "CurrencyImageURL": "//yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png"
+  },
+  {
+    "Id": "example2",
+    "Price": "50",
+    "CurrencyImageURL": "//yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png"
+  }
+]

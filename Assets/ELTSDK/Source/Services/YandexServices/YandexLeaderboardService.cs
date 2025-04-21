@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Cysharp.Threading.Tasks;
 using ELTSDK.Source.Entities;
@@ -8,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace ELTSDK.Source.Services.YandexServices
 {
-   public class YandexLeaderboardService : SingletonBehaviour<YandexLeaderboardService>, ILeaderboardService
+   internal class YandexLeaderboardService : SingletonBehaviour<YandexLeaderboardService>, ILeaderboardService
    {
       [DllImport("__Internal")]
       private static extern void SetScoreToLeaderboardExtern(string leaderboardName, int value);
@@ -20,10 +21,12 @@ namespace ELTSDK.Source.Services.YandexServices
 
       public Dictionary<string, Leaderboard> Leaderboards { get; } = new();
 
+      public event Action<string> LeaderboardUpdated;
+
       public void SetScoreToLeaderboard(string leaderboardName, int value) =>
          SetScoreToLeaderboardExtern(leaderboardName, value);
 
-      public async UniTask UpdateLeaderboard(string leaderboardName)
+      public async UniTask LoadLeaderboard(string leaderboardName)
       {
          _loadCompletionSource = new();
          LoadLeaderboardExtern(leaderboardName);
@@ -39,7 +42,7 @@ namespace ELTSDK.Source.Services.YandexServices
 
       private void OnLeaderboardScoreSet(string leaderboardName)
       {
-         
+         LeaderboardUpdated?.Invoke(leaderboardName);
       }
    }
 }

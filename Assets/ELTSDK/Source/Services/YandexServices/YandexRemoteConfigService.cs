@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ELTSDK.Source.Services.YandexServices
 {
-   public class YandexRemoteConfigService : SingletonBehaviour<YandexRemoteConfigService>, IRemoteConfigService
+   internal class YandexRemoteConfigService : SingletonBehaviour<YandexRemoteConfigService>, IRemoteConfigService
    {
       [DllImport("__Internal")]
       private static extern void LoadConfigsExtern();

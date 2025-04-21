@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using ELTSDK.Source.Entities;
 using ELTSDK.Source.Services.Interfaces;
@@ -12,12 +13,14 @@ namespace ELTSDK.Source.Services.EditorServices
       private const string EditorLeaderboardPath = "leaderboard";
       public Dictionary<string, Leaderboard> Leaderboards { get; private set; } = new();
 
+      public event Action<string> LeaderboardUpdated;
+
       public void SetScoreToLeaderboard(string leaderboardName, int value)
       {
-         Debug.Log($"[<color=yellow>ELTSDK</color>] - Set {value} to {leaderboardName} leaderboard");
+         LeaderboardUpdated?.Invoke(leaderboardName);
       }
 
-      public async UniTask UpdateLeaderboard(string leaderboardName)
+      public async UniTask LoadLeaderboard(string leaderboardName)
       {
          var json = Resources.Load<TextAsset>(EditorLeaderboardPath).text;
          var leaderboard = JsonConvert.DeserializeObject<Leaderboard>(json);

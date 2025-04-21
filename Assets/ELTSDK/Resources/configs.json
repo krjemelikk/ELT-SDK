@@ -1,8 +1,10 @@
-{
-  "Configs": [
-    {
-      "Name": "exampleName",
-      "Value": "exampleValue"
-    }
-  ]
-}
+[
+  {
+    "Name": "exampleName",
+    "Value": "exampleValue"
+  },
+  {
+    "Name": "exampleName2",
+    "Value": "exampleValue2"
+  }
+]

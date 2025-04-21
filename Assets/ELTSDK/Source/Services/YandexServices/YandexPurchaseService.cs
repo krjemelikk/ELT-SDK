@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ELTSDK.Source.Services.YandexServices
 {
-   public class YandexPurchaseService : SingletonBehaviour<YandexPurchaseService>, IPurchaseService
+   internal class YandexPurchaseService : SingletonBehaviour<YandexPurchaseService>, IPurchaseService
    {
       [DllImport("__Internal")]
       private static extern void PurchaseExtern(string productId, bool withConsume);
