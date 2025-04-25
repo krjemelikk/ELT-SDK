@@ -14,8 +14,7 @@ namespace ELTSDK.Source
       public IFeedbackService FeedbackService { get; private set; }
       public IGameplayMarkupService GameplayMarkupService { get; private set; }
       public ILeaderboardService LeaderboardService { get; private set; }
-      public IProductService ProductService { get; private set; }
-      public IPurchaseService PurchaseService { get; private set; }
+      public IIAPService IAPService { get; private set; }
       public IRemoteConfigService RemoteConfigService { get; private set; }
       public ISaveLoadService SaveLoadService { get; private set; }
 
@@ -30,8 +29,7 @@ namespace ELTSDK.Source
          FeedbackService = new FeedbackServiceLogger(serviceFactory.Create<IFeedbackService>());
          GameplayMarkupService = new GameplayMarkupServiceLogger(serviceFactory.Create<IGameplayMarkupService>());
          LeaderboardService = new LeaderboardServiceLogger(serviceFactory.Create<ILeaderboardService>());
-         ProductService = new ProductServiceLogger(serviceFactory.Create<IProductService>());
-         PurchaseService = new PurchaseServiceLogger(serviceFactory.Create<IPurchaseService>());
+         IAPService = new IAPServiceLogger(serviceFactory.Create<IIAPService>());
          RemoteConfigService = new RemoteConfigServiceLogger(serviceFactory.Create<IRemoteConfigService>());
          SaveLoadService = new SaveLoadServiceLogger(serviceFactory.Create<ISaveLoadService>());
 

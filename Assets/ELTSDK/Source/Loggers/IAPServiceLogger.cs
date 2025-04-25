@@ -1,21 +1,34 @@
 ﻿using System;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using ELTSDK.Source.Entities;
 using ELTSDK.Source.Services.Interfaces;
+using Unity.Plastic.Newtonsoft.Json;
 using UnityEngine;
 
 namespace ELTSDK.Source.Loggers
 {
-   internal class PurchaseServiceLogger : IPurchaseService
+   internal class IAPServiceLogger : IIAPService
    {
-      private const string Label = "<color=yellow><b>[Purchase Service]</b></color>";
-      private readonly IPurchaseService _service;
+      private const string Label = "<color=yellow><b>[IAP Service]</b></color>";
+      private readonly IIAPService _service;
 
-      public PurchaseServiceLogger(IPurchaseService service) =>
+      public IAPServiceLogger(IIAPService service) =>
          _service = service;
+
+      public Dictionary<string, Product> Products => _service.Products;
+      public Sprite CurrencySprite => _service.CurrencySprite;
 
       public event Action<string> PurchaseComplete
       {
          add => _service.PurchaseComplete += value;
          remove => _service.PurchaseComplete -= value;
+      }
+
+      public async UniTask LoadAllProductData()
+      {
+         await _service.LoadAllProductData();
+         Debug.Log($"{Label} - Products data loaded: \n {JsonConvert.SerializeObject(Products, Formatting.Indented)}");
       }
 
       public void Purchase(string productId, bool withConsume)

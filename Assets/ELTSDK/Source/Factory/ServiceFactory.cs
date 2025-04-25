@@ -25,8 +25,7 @@ namespace ELTSDK.Source.Factory
             {typeof(IFeedbackService), CreateService<EditorFeedbackService, YandexFeedbackService>},
             {typeof(IGameplayMarkupService), CreateService<EditorGameplayMarkupService, YandexGameplayMarkupService>},
             {typeof(ILeaderboardService), CreateService<EditorLeaderboardService, YandexLeaderboardService>},
-            {typeof(IProductService), CreateService<EditorProductService, YandexProductService>},
-            {typeof(IPurchaseService), CreateService<EditorPurchasesService, YandexPurchaseService>},
+            {typeof(IIAPService), CreateService<EditorIAPService, YandexIAPService>},
             {typeof(IRemoteConfigService), CreateService<EditorRemoteConfigService, YandexRemoteConfigService>},
             {typeof(ISaveLoadService), CreateService<EditorSaveLoadService, YandexSaveLoadService>},
          };

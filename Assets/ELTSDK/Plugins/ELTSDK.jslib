@@ -1,5 +1,5 @@
 mergeInto(LibraryManager.library, {
-   
+
    // Advertisement
    ShowInterstitialAdExtern: function () {
       ysdk.adv.showFullscreenAdv({
@@ -53,12 +53,12 @@ mergeInto(LibraryManager.library, {
    },
 
    // Feedback
-   ReviewRequestExtern: function (){
+   ReviewRequestExtern: function () {
       ysdk.feedback.canReview()
-         .then(({ value, reason }) => {
+         .then(({value, reason}) => {
             if (value) {
                ysdk.feedback.requestReview()
-                  .then(({ feedbackSent }) => {
+                  .then(({feedbackSent}) => {
                      gameInstance.SendMessage("ELTSDK", "OnFeedbackSent");
                   })
             } else {
@@ -73,9 +73,9 @@ mergeInto(LibraryManager.library, {
    },
 
    // Leaderboards
-   SetScoreToLeaderboardExtern: function (leaderboardName, value){
+   SetScoreToLeaderboardExtern: function (leaderboardName, value) {
       var lbName = UTF8ToString(leaderboardName);
-      
+
       ysdk.isAvailableMethod('leaderboards.setLeaderboardScore').then(isAvailable => {
          if (isAvailable) {
             ysdk.getLeaderboards().then(lb => {
@@ -88,20 +88,20 @@ mergeInto(LibraryManager.library, {
 
    LoadLeaderboardExtern: function (leaderboardName) {
       var lbName = UTF8ToString(leaderboardName);
-      
+
       var isPlayerAuthorized = player.getMode() !== 'lite';
       var playerId = "undefined";
-      
-      if(isPlayerAuthorized === true){
+
+      if (isPlayerAuthorized === true) {
          playerId = player.getUniqueID();
       }
-      
+
       ysdk.getLeaderboards().then(lb => {
-         lb.getLeaderboardEntries(lbName, { quantityTop: 10, includeUser: isPlayerAuthorized, quantityAround: 0 })
+         lb.getLeaderboardEntries(lbName, {quantityTop: 10, includeUser: isPlayerAuthorized, quantityAround: 0})
             .then(res => {
                var leaderboardEntries = [];
-               for (i = 0; i < res.entries.length; i++){
-                  
+               for (i = 0; i < res.entries.length; i++) {
+
                   let leaderboardEntry = {
                      Rank: res.entries[i].rank,
                      Score: res.entries[i].score,
@@ -122,28 +122,27 @@ mergeInto(LibraryManager.library, {
       });
    },
 
-   // Products
+   // IAP
    LoadAllProductDataExtern: function () {
       var productList = [];
       payments.getCatalog().then(products => {
          for (i = 0; i < products.length; i++) {
-            
+
             let product = {
                Id: products[i].id,
                Price: products[i].priceValue,
                CurrencyImageURL: products[i].getPriceCurrencyImage('medium'),
             }
-            
+
             productList.push(product);
          }
-         
+
          var json = JSON.stringify(productList);
          console.log(json)
          gameInstance.SendMessage("ELTSDK", "OnProductDataLoaded", json);
       });
    },
-
-   // Purchases
+   
    PurchaseExtern: function (productId, withConsume) {
       payments.purchase(UTF8ToString(productId)).then(purchase => {
          var json = JSON.stringify({
@@ -151,7 +150,7 @@ mergeInto(LibraryManager.library, {
             Token: purchase.purchaseToken,
             WithConsume: withConsume,
          });
-         
+
          gameInstance.SendMessage("ELTSDK", "OnPurchaseComplete", json);
       }).catch(err => {
          console.log('Purchase Failed', err.message);
@@ -163,7 +162,7 @@ mergeInto(LibraryManager.library, {
 
       payments.getPurchases().then(purchases => {
          var purchase = purchases.find(purchase => purchase.productID === purchaseId);
-         
+
          if (purchase) {
             var json = JSON.stringify({
                ProductId: purchase.productID,
@@ -181,23 +180,23 @@ mergeInto(LibraryManager.library, {
    ConsumePurchaseExtern: function (token) {
       payments.consumePurchase(UTF8ToString(token));
    },
-   
+
    // Configs
-   LoadConfigsExtern: function (){
+   LoadConfigsExtern: function () {
       ysdk.getFlags().then(flags => {
          gameInstance.SendMessage("ELTSDK", "OnConfigsLoaded", JSON.stringify(flags));
       });
    },
 
    // Save Load
-   SaveExtern: function (data){
+   SaveExtern: function (data) {
       var json = JSON.stringify(UTF8ToString(data));
       player.setData(json).then(() => {
          console.log('Saved');
       });
-   },   
-   
-   LoadExtern: function (){
+   },
+
+   LoadExtern: function () {
       player.getData().then(data => {
          gameInstance.SendMessage("ELTSDK", "OnLoaded", JSON.stringify(data));
       });
