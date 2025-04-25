@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 using ELTSDK.Source.Entities;
 using ELTSDK.Source.Extensions;
 using ELTSDK.Source.Services.Interfaces;
-using Unity.Plastic.Newtonsoft.Json;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace ELTSDK.Source.Services.EditorServices
