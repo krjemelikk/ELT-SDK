@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace ELTSDK.Source.Services.EditorServices
 {
-   internal class EditorProductsService : IProductService
+   internal class EditorProductService : IProductService
    {
       private const string EditorProductPath = "products";
       public Dictionary<string, Product> Products { get; private set; } = new();

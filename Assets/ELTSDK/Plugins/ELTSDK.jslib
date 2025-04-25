@@ -92,8 +92,8 @@ mergeInto(LibraryManager.library, {
       var isPlayerAuthorized = player.getMode() !== 'lite';
       var playerId = "undefined";
       
-      if(isPlayerAuthorized){
-         playerId = player.uniqueID;
+      if(isPlayerAuthorized === true){
+         playerId = player.getUniqueID();
       }
       
       ysdk.getLeaderboards().then(lb => {
@@ -108,7 +108,7 @@ mergeInto(LibraryManager.library, {
                      Name: res.entries[i].player.publicName,
                      IsPlayer: res.entries[i].player.uniqueID === playerId,
                   }
-
+                  console.log(res.entries[i].player.uniqueID);
                   leaderboardEntries.push(leaderboardEntry);
                }
 
@@ -124,8 +124,8 @@ mergeInto(LibraryManager.library, {
 
    // Products
    LoadAllProductDataExtern: function () {
+      var productList = [];
       payments.getCatalog().then(products => {
-         var productList = [];
          for (i = 0; i < products.length; i++) {
             
             let product = {
@@ -137,7 +137,8 @@ mergeInto(LibraryManager.library, {
             productList.push(product);
          }
          
-         var json = JSON.stringify(product);
+         var json = JSON.stringify(productList);
+         console.log(json)
          gameInstance.SendMessage("ELTSDK", "OnProductDataLoaded", json);
       });
    },

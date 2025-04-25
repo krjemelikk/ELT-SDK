@@ -1,74 +1,71 @@
 {
-  "Leaderboard": 
+  "Name": "example2",
+  "Entries": [
     {
-      "Name": "example2",
-      "Entries": [
-        {
-          "Rank": "1",
-          "Score": "10000",
-          "Name": "Sam",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "2",
-          "Score": "9000",
-          "Name": "John",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "3",
-          "Score": "8000",
-          "Name": "Bob",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "4",
-          "Score": "7000",
-          "Name": "Joe Pitch",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "5",
-          "Score": "6000",
-          "Name": "Clare",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "6",
-          "Score": "5000",
-          "Name": "Shrek",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "7",
-          "Score": "4000",
-          "Name": "Kenny",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "8",
-          "Score": "3000",
-          "Name": "Christopher",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "9",
-          "Score": "2000",
-          "Name": "Kailyn",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "10",
-          "Score": "1000",
-          "Name": "Eric Cartman",
-          "IsPlayer": "false"
-        },
-        {
-          "Rank": "27",
-          "Score": "500",
-          "Name": "Player",
-          "IsPlayer": "true"
-        }
-      ]
+      "Rank": "1",
+      "Score": "10000",
+      "Name": "Sam",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "2",
+      "Score": "9000",
+      "Name": "John",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "3",
+      "Score": "8000",
+      "Name": "Bob",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "4",
+      "Score": "7000",
+      "Name": "Joe Pitch",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "5",
+      "Score": "6000",
+      "Name": "Clare",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "6",
+      "Score": "5000",
+      "Name": "Shrek",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "7",
+      "Score": "4000",
+      "Name": "Kenny",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "8",
+      "Score": "3000",
+      "Name": "Christopher",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "9",
+      "Score": "2000",
+      "Name": "Kailyn",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "10",
+      "Score": "1000",
+      "Name": "Eric Cartman",
+      "IsPlayer": "false"
+    },
+    {
+      "Rank": "27",
+      "Score": "500",
+      "Name": "Player",
+      "IsPlayer": "true"
     }
+  ]
 }
