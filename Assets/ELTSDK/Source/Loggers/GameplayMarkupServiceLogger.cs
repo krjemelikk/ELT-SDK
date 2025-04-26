@@ -1,4 +1,5 @@
-﻿using ELTSDK.Source.Services.Interfaces;
+﻿using System;
+using ELTSDK.Source.Services.Interfaces;
 using UnityEngine;
 
 namespace ELTSDK.Source.Loggers
@@ -11,6 +12,12 @@ namespace ELTSDK.Source.Loggers
       public GameplayMarkupServiceLogger(IGameplayMarkupService service) =>
          _service = service;
 
+      public event Action<bool> VisibilityChanged
+      {
+         add => _service.VisibilityChanged += value;
+         remove => _service.VisibilityChanged -= value;
+      }
+      
       public void GameReady()
       {
          _service.GameReady();
