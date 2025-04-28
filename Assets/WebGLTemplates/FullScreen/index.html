@@ -65,10 +65,10 @@
   document.addEventListener('visibilitychange', function () {
     if (ysdk !== null && isGameInitialized === true) {
       if (document.hidden) {
-        myGameInstance.SendMessage('ELTSDK', 'OnVisibilityChanged', 'false');
+        gameInstance.SendMessage('ELTSDK', 'OnVisibilityChanged', 'false');
       }
       else {
-        myGameInstance.SendMessage('ELTSDK', 'OnVisibilityChanged', 'true');
+        gameInstance.SendMessage('ELTSDK', 'OnVisibilityChanged', 'true');
       }
     }
   });
