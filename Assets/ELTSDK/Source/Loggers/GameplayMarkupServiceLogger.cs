@@ -4,13 +4,16 @@ using UnityEngine;
 
 namespace ELTSDK.Source.Loggers
 {
-   internal class GameplayMarkupServiceLogger : IGameplayMarkupService
+   internal class GameplayMarkupServiceLogger : IGameplayMarkupService, IDisposable
    {
       private const string Label = "<color=yellow><b>[Gameplay Markup]</b></color>";
       private readonly IGameplayMarkupService _service;
 
-      public GameplayMarkupServiceLogger(IGameplayMarkupService service) =>
+      public GameplayMarkupServiceLogger(IGameplayMarkupService service)
+      {
          _service = service;
+         VisibilityChanged += OnVisibilityChanged;
+      }
 
       public event Action<bool> VisibilityChanged
       {
@@ -22,6 +25,14 @@ namespace ELTSDK.Source.Loggers
       {
          _service.GameReady();
          Debug.Log($"{Label} - Game Ready");
+      }
+      
+      public void Dispose() =>
+         VisibilityChanged -= OnVisibilityChanged;
+
+      private void OnVisibilityChanged(bool visibility)
+      {
+         Debug.Log($"{Label} - Visibility status - {visibility}");
       }
    }
 }

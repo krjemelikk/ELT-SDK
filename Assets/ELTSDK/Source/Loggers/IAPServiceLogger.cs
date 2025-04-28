@@ -8,13 +8,16 @@ using UnityEngine;
 
 namespace ELTSDK.Source.Loggers
 {
-   internal class IAPServiceLogger : IIAPService
+   internal class IAPServiceLogger : IIAPService, IDisposable
    {
       private const string Label = "<color=yellow><b>[IAP Service]</b></color>";
       private readonly IIAPService _service;
 
-      public IAPServiceLogger(IIAPService service) =>
+      public IAPServiceLogger(IIAPService service)
+      {
          _service = service;
+         PurchaseComplete += OnPurchaseComplete;
+      }
 
       public Dictionary<string, Product> Products => _service.Products;
       public Sprite CurrencySprite => _service.CurrencySprite;
@@ -27,20 +30,26 @@ namespace ELTSDK.Source.Loggers
 
       public async UniTask LoadAllProductData()
       {
-         await _service.LoadAllProductData();
          Debug.Log($"{Label} - Products data loaded: \n {JsonConvert.SerializeObject(Products, Formatting.Indented)}");
+         await _service.LoadAllProductData();
       }
 
       public void Purchase(string productId, bool withConsume)
       {
-         _service.Purchase(productId, withConsume);
          Debug.Log($"{Label} - Purchase request with Id: {productId}, Consume: {withConsume}");
+         _service.Purchase(productId, withConsume);
       }
 
       public void CheckPurchase(string productId, bool withConsume)
       {
-         _service.CheckPurchase(productId, withConsume);
          Debug.Log($"{Label} - Check Purchase Request with Id:{productId}, Consume:{withConsume}");
+         _service.CheckPurchase(productId, withConsume);
       }
+
+      public void Dispose() =>
+         PurchaseComplete -= OnPurchaseComplete;
+
+      private void OnPurchaseComplete(string id) =>
+         Debug.Log($"{Label} - Purchase with id - {id} completed");
    }
 }
