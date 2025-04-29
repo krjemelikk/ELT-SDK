@@ -7,8 +7,9 @@ namespace ELTSDK.Source.Entities
    public class Product
    {
       [JsonProperty] public string Id { get; private set; }
-      [JsonProperty] public string Title { get; private set; }
       [JsonProperty] public string Price { get; private set; }
+      [JsonProperty] public string Title { get; private set; }
+      [JsonProperty] public string Description { get; private set; }
       [JsonProperty] public string CurrencyImageURL { get; private set; }
    }
 }

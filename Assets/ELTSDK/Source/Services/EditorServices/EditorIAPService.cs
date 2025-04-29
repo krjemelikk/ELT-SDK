@@ -58,6 +58,7 @@ namespace ELTSDK.Source.Services.EditorServices
                Id = columns[0],
                Price = columns[1],
                Title = columns[2],
+               Description = columns[3],
                CurrencyImageURL = CurrencyURL
             };
             
