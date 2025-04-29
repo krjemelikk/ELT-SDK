@@ -30,9 +30,7 @@ namespace ELTSDK.Source.Loggers
       public void Dispose() =>
          VisibilityChanged -= OnVisibilityChanged;
 
-      private void OnVisibilityChanged(bool visibility)
-      {
+      private void OnVisibilityChanged(bool visibility) => 
          Debug.Log($"{Label} - Visibility status - {visibility}");
-      }
    }
 }

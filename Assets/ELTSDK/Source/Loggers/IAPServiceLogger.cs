@@ -30,20 +30,20 @@ namespace ELTSDK.Source.Loggers
 
       public async UniTask LoadAllProductData()
       {
-         Debug.Log($"{Label} - Products data loaded: \n {JsonConvert.SerializeObject(Products, Formatting.Indented)}");
          await _service.LoadAllProductData();
+         Debug.Log($"{Label} - Products data loaded: \n {JsonConvert.SerializeObject(Products, Formatting.Indented)}");
       }
 
       public void Purchase(string productId, bool withConsume)
       {
-         Debug.Log($"{Label} - Purchase request with Id: {productId}, Consume: {withConsume}");
          _service.Purchase(productId, withConsume);
+         Debug.Log($"{Label} - Purchase request with Id: {productId}, Consume: {withConsume}");
       }
 
       public void CheckPurchase(string productId, bool withConsume)
       {
-         Debug.Log($"{Label} - Check Purchase Request with Id:{productId}, Consume:{withConsume}");
          _service.CheckPurchase(productId, withConsume);
+         Debug.Log($"{Label} - Check Purchase Request with Id:{productId}, Consume:{withConsume}");
       }
 
       public void Dispose() =>

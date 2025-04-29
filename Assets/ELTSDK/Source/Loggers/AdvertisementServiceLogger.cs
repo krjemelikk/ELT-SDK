@@ -30,26 +30,26 @@ namespace ELTSDK.Source.Loggers
 
       public void ShowInterstitial()
       {
-         Debug.Log($"{Label} - Interstitial ad");
          _service.ShowInterstitial();
+         Debug.Log($"{Label} - Interstitial ad");
       }
 
       public void ShowRewarded(Action onRewarded)
       {
-         Debug.Log($"{Label} - Rewarded ad");
          _service.ShowRewarded(onRewarded);
+         Debug.Log($"{Label} - Rewarded ad");
       }
 
       public void ShowBanner()
       {
-         Debug.Log($"{Label} - Show ad banner");
          _service.ShowBanner();
+         Debug.Log($"{Label} - Show ad banner");
       }
 
       public void HideBanner()
       {
-         Debug.Log($"{Label} - Hide ad banner");
          _service.HideBanner();
+         Debug.Log($"{Label} - Hide ad banner");
       }
 
       public void Dispose()
