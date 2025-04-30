@@ -130,9 +130,9 @@ mergeInto(LibraryManager.library, {
 
             let product = {
                Id: products[i].id,
+               Price: products[i].priceValue,
                Title: products[i].title,
                Description: products[i].description,
-               Price: products[i].priceValue,
                CurrencyImageURL: products[i].getPriceCurrencyImage('medium'),
             }
 
